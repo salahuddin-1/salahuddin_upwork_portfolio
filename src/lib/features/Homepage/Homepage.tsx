@@ -41,7 +41,7 @@ const Homepage = () => {
       <TechnologyExpertiseSection />
       <SectionSpacing />
 
-      {/* <LetsGetInTouch /> */}
+      <LetsGetInTouch />
     </BasePage>
   );
 };

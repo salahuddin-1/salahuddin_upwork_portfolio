@@ -8,6 +8,9 @@ import { projectImagesList } from "../../Work/sections/ProjectsSection";
 import { DeviceTypeEnum } from "src/domain/enums/device_type_enum";
 import { SectionSpacing } from "@components/SectionSpacing";
 import MobileProjectCarousel from "../../Work/components/MobileProjectCarousel";
+import PlaystoreButton from "@components/PlaystoreButton";
+import PlaystoreButtonLocked from "@components/PlaystoreButtonLocked";
+import { AppColor } from "src/domain/constants/AppColor";
 
 interface RecentWorkProjectDetailsProps {
   projectDetails: WorkStackProps | undefined;
@@ -88,18 +91,27 @@ const RecentWorkProjectDetails = (props: RecentWorkProjectDetailsProps) => {
 
   return (
     <>
-      <AnimateOnLoad delay={0.2} translateY={animationOnLoadProps.translateY}>
+      {/* <AnimateOnLoad delay={0.2} translateY={animationOnLoadProps.translateY}>
         <Flex bg="" flexWrap="wrap">
-          {/* TECH STACK USED */}
+          TECH STACK USED
           {techStackList(props.projectDetails?.techStack ?? [])}
         </Flex>
-      </AnimateOnLoad>
-      <Box height="50px" />
+      </AnimateOnLoad> */}
+      {/* <Box height="50px" /> */}
 
       <AnimateOnLoad delay={animationOnLoadProps.delay()} translateY={50}>
         <AppPageSubheading>
           {props.projectDetails?.description ?? ""}
         </AppPageSubheading>
+      </AnimateOnLoad>
+
+      <Box height="50px" />
+
+      <AnimateOnLoad delay={animationOnLoadProps.delay()} translateY={50}>
+        <_ViewOnStoreButton
+          playstoreLink={props.projectDetails?.playstoreLink}
+          isProjectPrivate={props.projectDetails?.isProjectPrivate ?? false}
+        />
       </AnimateOnLoad>
 
       <Box height="50px" />
@@ -110,5 +122,31 @@ const RecentWorkProjectDetails = (props: RecentWorkProjectDetailsProps) => {
     </>
   );
 };
+
+const _ViewOnStoreButton = (props: _ViewOnStoreButtonProps) => {
+  if (props.isProjectPrivate) {
+    return (
+      <>
+        <PlaystoreButtonLocked />
+        <Box height="20px" />
+        <Text fontSize="11px" color={AppColor.DARK_GRAY}>
+          Please note: This project was created exclusively for private use and
+          is not available for public download or distribution
+        </Text>
+      </>
+    );
+  }
+
+  if (!props.playstoreLink) {
+    return <></>;
+  }
+
+  return <PlaystoreButton hrefLink={props.playstoreLink} />;
+};
+
+interface _ViewOnStoreButtonProps {
+  playstoreLink: string | undefined | null;
+  isProjectPrivate: boolean;
+}
 
 export default RecentWorkProjectDetails;

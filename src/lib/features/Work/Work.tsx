@@ -25,7 +25,7 @@ const Work = () => {
       <ProjectsSection />
       <SectionSpacing />
 
-      {/* <LetsGetInTouch /> */}
+      <LetsGetInTouch />
     </BasePage>
   );
 };

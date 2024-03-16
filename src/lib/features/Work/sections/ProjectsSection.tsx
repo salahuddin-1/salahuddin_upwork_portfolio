@@ -16,6 +16,9 @@ import { useHomepageViewModel } from "src/lib/providers/HomepageViewModelProvide
 import AnimateOnLoad from "@components/AnimateOnLoad";
 import { useWorkViewModel } from "src/lib/providers/WorkViewModelProvider";
 import MobileProjectCarousel from "../components/MobileProjectCarousel";
+import PlaystoreButtonLocked from "@components/PlaystoreButtonLocked";
+import PlaystoreButton from "@components/PlaystoreButton";
+import { AppColor } from "src/domain/constants/AppColor";
 
 interface _TechItemProps {
   children: string;
@@ -284,7 +287,13 @@ const ProjectsSection: React.FC = () => {
           <Text>{item.description}</Text>
         </AnimateOnLoad>
 
-        <Box height="50px" />
+        <AnimateOnLoad delay={0.5} translateY={animationOnLoadProps.translateY}>
+          <_ViewOnStoreButton
+            playstoreLink={item.playstoreLink}
+            isProjectPrivate={item.isProjectPrivate ?? false}
+            deviceType={item.deviceType}
+          />
+        </AnimateOnLoad>
 
         <ProjectView />
       </Flex>
@@ -293,5 +302,40 @@ const ProjectsSection: React.FC = () => {
 
   return <>{projects}</>;
 };
+const _ViewOnStoreButton = (props: _ViewOnStoreButtonProps) => {
+  if (props.isProjectPrivate) {
+    return (
+      <Box marginY="50px">
+        <PlaystoreButtonLocked />
+        <Box height="20px" />
+        <Text fontSize="11px" color={AppColor.DARK_GRAY}>
+          Please note: This project was created exclusively for private use and
+          is not available for public download or distribution
+        </Text>
+      </Box>
+    );
+  }
 
+  if (!props.playstoreLink) {
+    return <Box marginY="50px"></Box>;
+  }
+
+  const _getLabel = (): string | undefined => {
+    if (props.deviceType === DeviceTypeEnum.WEB) {
+      return "View Website";
+    }
+  };
+
+  return (
+    <Box marginY="50px">
+      <PlaystoreButton hrefLink={props.playstoreLink} label={_getLabel()} />
+    </Box>
+  );
+};
+
+interface _ViewOnStoreButtonProps {
+  playstoreLink: string | undefined | null;
+  isProjectPrivate: boolean;
+  deviceType: DeviceTypeEnum;
+}
 export default ProjectsSection;

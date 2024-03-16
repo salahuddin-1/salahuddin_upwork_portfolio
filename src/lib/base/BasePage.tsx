@@ -42,9 +42,9 @@ const BasePage = ({ children }: Props) => {
       </GridItem>
 
       {/* Remove this margin bottom */}
-      {/* <GridItem area="footer">
+      <GridItem area="footer">
         <Footer />
-      </GridItem> */}
+      </GridItem>
     </Grid>
   );
 };

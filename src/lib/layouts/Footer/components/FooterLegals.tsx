@@ -12,12 +12,6 @@ const FooterLegals = () => {
 
   const listOfLegals: FooterTextButtonProps[] = [
     {
-      label: "Get in touch",
-      onClick: () => {
-        navigate(RoutePaths.CONTACT_US);
-      },
-    },
-    {
       label: "Privacy Policy",
       onClick: () => {
         navigate(RoutePaths.PRIVACY_POLICY);
@@ -54,7 +48,7 @@ const FooterLegals = () => {
       <FooterVSpace />
       <FooterVSpace />
 
-      <FooterHeading>Drop me an email</FooterHeading>
+      {/* <FooterHeading>Drop me an email</FooterHeading>
       <FooterVSpace />
       <FooterText>{AppConstants.CONTACT_US_EMAIL}</FooterText>
       <FooterVSpace />
@@ -62,7 +56,7 @@ const FooterLegals = () => {
 
       <FooterHeading>Give me a ring or whatsapp</FooterHeading>
       <FooterVSpace />
-      <FooterText>{AppConstants.CONTACT_US_PHONE}</FooterText>
+      <FooterText>{AppConstants.CONTACT_US_PHONE}</FooterText> */}
     </>
   );
 };

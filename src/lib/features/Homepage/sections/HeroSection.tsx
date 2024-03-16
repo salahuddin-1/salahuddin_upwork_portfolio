@@ -181,7 +181,7 @@ const _ProfileImage = () => {
         fontSize={fontSizeSubtitle}
         fontWeight="400"
       >
-        Software Engineer
+        Mobile Application Developer
       </Text>
     </VStack>
   );

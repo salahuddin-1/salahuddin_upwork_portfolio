@@ -5,6 +5,7 @@ import { SectionSpacing } from "src/lib/ui/components/SectionSpacing";
 import ProjectsSection from "./sections/ProjectsSection";
 import LetsGetInTouch from "src/lib/ui/components/LetsGetInTouch";
 import { useEffect } from "react";
+import { Box } from "@chakra-ui/react";
 
 const Work = () => {
   const workV = useWorkViewModel();
@@ -23,9 +24,11 @@ const Work = () => {
 
       {/* PROJECTS SECTION */}
       <ProjectsSection />
-      <SectionSpacing />
 
-      <LetsGetInTouch />
+      {/* <SectionSpacing /> */}
+      <Box h="50px" />
+
+      {/* <LetsGetInTouch /> */}
     </BasePage>
   );
 };

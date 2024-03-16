@@ -170,7 +170,7 @@ const _ProfileImage = () => {
         fontSize={fontSizeTitle}
         fontWeight="400"
       >
-        Salahuddin Shaikh
+        Salahuddin M. Shaikh
       </Text>
 
       <Text
